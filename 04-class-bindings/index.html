@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task - Class Binding</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header class="header">
+        <section class="header__section">
+            <p class="header__task-name">💻 Coding Task</p>
+            <p class="header__bootcamp-info-wrapper">
+                <span class="header__bootcamp-modul"><strong>Modul:</strong> Web Apps with Vue.js - Part 1</span>
+                <a href="https://www.coding-bootcamps.eu/" class="header__bootcamp-link">coding-bootcamps.eu</a>
+            </p>
+        </section>
+    </header>
+    <main>
+        <div id="app" class="inside">
+            <nav>
+                <button class="btn btn-a" v-on:click="activeLetter = 'A'" :class="{
+                    'btn-active': activeLetter === 'A'
+                }">A</button>
+                <button class="btn btn-b" v-on:click="activeLetter = 'B'" :class="{
+                    'btn-active': activeLetter === 'B'
+                }">B</button>
+                <button class="btn btn-c" v-on:click="activeLetter = 'C'" :class="{
+                    'btn-active': activeLetter === 'C'
+                }">C</button>
+            </nav>
+            <main>
+                <div class="letter letter-a" :class="{
+                    'letter-active': activeLetter === 'A'
+                }">A</div>
+                <div class="letter letter-b" :class="{
+                    'letter-active': activeLetter === 'B'
+                }">B</div>
+                <div class="letter letter-c" :class="{
+                    'letter-active': activeLetter === 'C'
+                }">C</div>
+            </main>
+        </div>
+    </main>
+    <script src="https://unpkg.com/vue@latest"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
