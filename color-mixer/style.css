@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+}
+
+header {
+  border-bottom: 2px solid #000;
+  background-color: lightpink;
+  height: 5;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+input[type="range"] {
+  appearance: none;
+  cursor: pointer;
+  overflow: hidden;
+  border: 1px solid #000;
+  border-radius: 16px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 18px;
+  background: #ccc;
+  border-radius: 16px;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 18px;
+  background: #ccc;
+  border-radius: 16px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: -407px 0 0 400px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: -407px 0 0 400px;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.blue {
+  color: blue;
+}
+
+button {
+  padding: 10px;
+  background-color: #ccc;
+  color: #000;
+  border: 2px solid hotpink;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: whitesmoke;
+  color: hotpink;
+  box-shadow: 0 0 2px 0 hotpink;
+}
+
+#rgbCode {
+  width: 200px;
+}
+
+main {
+  height: 93.5vh;
+}
