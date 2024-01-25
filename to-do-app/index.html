@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App with API - VUE3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1 class="header__title">TO-DO-APP with API</h1>
+        </header>
+        <main>
+            <div id="add-todo-container">
+                <form id="form-add" class="todo-input">
+                    <input type="text" name="add-todo" placeholder="GET SH*T DONE!" v-model="descriptionValue"
+                        class="todo-input__input">
+                    <button type="submit" @click.prevent="createToDo(descriptionValue)" :disabled="!hasFiveOrMoreChars"
+                        class="button">Hinzufügen...</button>
+                </form>
+            </div>
+            <h2>Filter & Options</h2>
+            <div class="radio-container">
+                <input type="radio" class="radio-button" name="all" :checked="filterSelected === 'all'"
+                    @click="filterSelected = 'all'">
+                <label for="all">All</label>
+                <input type="radio" class="radio-button" name="open" :checked="filterSelected === 'open'"
+                    @click="filterSelected = 'open'">
+                <label for=" open">Open</label>
+                <input type="radio" class="radio-button" name="done" :checked="filterSelected === 'done'"
+                    @click="filterSelected = 'done'">
+                <label for=" done">Done</label>
+            </div>
+            <div id="delete-todo-container">
+                <form id="form-delete" class="todo-input">
+                    <input type="text" placeholder="Name des To-Dos" v-model="deleteInput" class="todo-input__input">
+                    <button type="submit" @click.prevent="deleteToDoByName(deleteInput)" class="button">Löschen</button>
+                </form>
+            </div>
+            <button id="delete-all" @click="deleteAllToDos()" class="button full-width">Alle erledigten To-Dos
+                löschen</button>
+            <div>
+                <h2>Your To-Dos</h2>
+                <ul class="todo-list" v-if="filterSelected === 'all'">
+                    <li v-for="(todo, index) in todos" :key="todo.id" class="todo-item"
+                        :class="todo.done ? 'li__checked' : ''" @change="updateToDo(todo.id, todo)">
+                        <input type="checkbox" v-model="todo.done" :checked="todo.done" :name="todo.id"
+                            class="todo-item__checkbox">
+                        <label :for="todo.id" :class="todo.done ? 'done' : ''">{{todo.description}}</label>
+                    </li>
+                </ul>
+                <ul class="todo-list" v-if="filterSelected === 'open'">
+                    <li v-for="(todo, index) in openToDos" :key="todo.id" class="todo-item"
+                        :class="todo.done ? 'li__checked' : ''" @change="updateToDo(todo.id, todo)">
+                        <input type="checkbox" v-model="todo.done" :checked="todo.done" :name="todo.id"
+                            class="todo-item__checkbox" disabled="true">
+                        <label :for="todo.id" :class="todo.done ? 'done' : ''">{{todo.description}}</label>
+                    </li>
+                </ul>
+                <ul class="todo-list" v-if="filterSelected === 'done'">
+                    <li v-for="(todo, index) in doneToDos" :key="todo.id" class="todo-item"
+                        :class="todo.done ? 'li__checked' : ''" @change="updateToDo(todo.id, todo)">
+                        <input type="checkbox" v-model="todo.done" :checked="todo.done" :name="todo.id"
+                            class="todo-item__checkbox" disabled="true">
+                        <label :for="todo.id" :class="todo.done ? 'done' : ''">{{todo.description}}</label>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    <script src="https://unpkg.com/vue@latest"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
