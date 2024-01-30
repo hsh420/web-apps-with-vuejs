@@ -12,6 +12,16 @@ Vue.createApp({
     hasFiveOrMoreChars() {
       return this.descriptionValue.length >= 5;
     },
+    filteredTodos() {
+      switch (true) {
+        case this.filterSelected === "done":
+          return this.doneToDos;
+        case this.filterSelected === "open":
+          return this.openToDos;
+        default:
+          return this.todos;
+      }
+    },
     doneToDos() {
       return Vue.toRaw(this.todos).filter((todo) => todo.done === true);
     },
@@ -87,7 +97,7 @@ Vue.createApp({
       this.todos = Vue.toRaw(this.todos).filter((todo) => todo.done === false);
     },
   },
-  mounted() {
-    this.readToDos();
+  async created() {
+    await this.readToDos();
   },
 }).mount("#app");

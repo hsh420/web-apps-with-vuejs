@@ -44,27 +44,11 @@
                 löschen</button>
             <div>
                 <h2>Your To-Dos</h2>
-                <ul class="todo-list" v-if="filterSelected === 'all'">
-                    <li v-for="(todo, index) in todos" :key="todo.id" class="todo-item"
+                <ul class="todo-list">
+                    <li v-for="(todo, index) in filteredTodos" :key="todo.id" class="todo-item"
                         :class="todo.done ? 'li__checked' : ''" @change="updateToDo(todo.id, todo)">
                         <input type="checkbox" v-model="todo.done" :checked="todo.done" :name="todo.id"
                             class="todo-item__checkbox">
-                        <label :for="todo.id" :class="todo.done ? 'done' : ''">{{todo.description}}</label>
-                    </li>
-                </ul>
-                <ul class="todo-list" v-if="filterSelected === 'open'">
-                    <li v-for="(todo, index) in openToDos" :key="todo.id" class="todo-item"
-                        :class="todo.done ? 'li__checked' : ''" @change="updateToDo(todo.id, todo)">
-                        <input type="checkbox" v-model="todo.done" :checked="todo.done" :name="todo.id"
-                            class="todo-item__checkbox" disabled="true">
-                        <label :for="todo.id" :class="todo.done ? 'done' : ''">{{todo.description}}</label>
-                    </li>
-                </ul>
-                <ul class="todo-list" v-if="filterSelected === 'done'">
-                    <li v-for="(todo, index) in doneToDos" :key="todo.id" class="todo-item"
-                        :class="todo.done ? 'li__checked' : ''" @change="updateToDo(todo.id, todo)">
-                        <input type="checkbox" v-model="todo.done" :checked="todo.done" :name="todo.id"
-                            class="todo-item__checkbox" disabled="true">
                         <label :for="todo.id" :class="todo.done ? 'done' : ''">{{todo.description}}</label>
                     </li>
                 </ul>
